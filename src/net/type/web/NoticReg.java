@@ -11,6 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/notice-reg")
 public class NoticReg extends HttpServlet {
+<<<<<<< HEAD
+
+=======
+>>>>>>> bf5463cd94b52733cc2876cbfa1d1c8542002239
 	@Override
 	protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
