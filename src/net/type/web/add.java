@@ -19,10 +19,7 @@ public class add extends HttpServlet{
 		
 		PrintWriter out = resp.getWriter();
 		
-<<<<<<< HEAD
 		
-=======
->>>>>>> bf5463cd94b52733cc2876cbfa1d1c8542002239
 		int x = 0;
 		int y = 0;
 		
