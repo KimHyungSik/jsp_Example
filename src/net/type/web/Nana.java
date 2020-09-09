@@ -30,3 +30,5 @@ public class Nana extends HttpServlet {
 			out.println((i+1) + ":¾È³ç servlet!! <br />");
 	}
 }
+
+
