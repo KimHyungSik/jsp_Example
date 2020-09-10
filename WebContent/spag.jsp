@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" 
+	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
 <!DOCTYPE html>
@@ -11,10 +12,10 @@
 	pageContext.setAttribute("aa","hello");
 %>
 <body>
-	${model}입니다
-	
+	${model}입니다	
 	${notice.title}
 	${aa}
-	
+	${empty param.n ? '값이 비어있습니다' : param.n}
+	${header.Host}
 </body>
 </html>

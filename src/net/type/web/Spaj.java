@@ -29,9 +29,9 @@ public class Spaj extends HttpServlet{
 		if(num_ != null && !num_.equals(""))
 			num = Integer.parseInt(num_);
 		if (num % 2 != 0)
-			model = "Â¦¼ö";
-		else 
 			model = "È¦¼ö";
+		else 
+			model = "Â¦¼ö";
 		
 		notice.put("id", 1);
 		notice.put("title", "Hello");
