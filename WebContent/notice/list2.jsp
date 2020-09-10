@@ -1,6 +1,22 @@
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.Connection"%>
+
 <%@ page language="java" 
 	contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%
+	String url = "jdbc:mysql://localhost/learnjsp?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+	String sql = "SELECT * FROM NOTICE";
+
+	Class.forName("com.mysql.jdbc.Driver");
+	Connection con = DriverManager.getConnection(url, "learnjsp", "1234");
+	Statement st = con.createStatement();
+	ResultSet rs = st.executeQuery(sql);
+%>	
+
 <!DOCTYPE html>
 <html>
 
@@ -174,17 +190,18 @@
 					</thead>
 					<tbody>
 					
-					
+					<% while(rs.next()){%>
 							
 					<tr>
-						<td>8</td>
-						<td class="title indent text-align-left"><a href="detail.html">스프링 8강까지의 예제 코드</a></td>
-						<td>newlec</td>
+						<td><%=rs.getInt("id")%></td>
+						<td class="title indent text-align-left"><a href="detail.html"><%=rs.getString("title")%></a></td>
+						<td><%=rs.getString("writer_id") %></td>
 						<td>
-							2019-08-18		
+							<%= rs.getDate("reg_data") %>		
 						</td>
-						<td>146</td>
+						<td><%=rs.getInt("hit") %></td>
 					</tr>
+					<%} %>
 					
 					</tbody>
 				</table>
@@ -258,3 +275,10 @@
     </body>
     
     </html>
+    
+    <%
+    rs.close();
+    st.close();
+    con.close();
+    %>
+    
