@@ -3,6 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 
@@ -174,14 +175,14 @@
 						</thead>
 						<tbody>
 
-							<c:forEach var="n" items="${list}" begin="0" end="3">
+							<c:forEach var="n" items="${list}">
 							
 							<tr>
 								<td>${n.id}</td>
 								<td class="title indent text-align-left"><a
 									href="detail?id=${n.id}">${n.title}</a></td>
 								<td>${n.writer_id}</td>
-								<td>${n.reg_date}</td>
+								<td><fmt:formatDate pattern="yyyy-MM-dd" value="${n.reg_date}"/></td>
 								<td>${n.hit}</td>
 							</tr>
 							</c:forEach>
@@ -197,15 +198,21 @@
 				</div>
 
 				<div class="margin-top align-center pager">
+				
+					<c:set var="page" value="${(param.p == null) ? 1:param.p}"/>
+					
+					<c:set var="startNum" value="${page-(page-1)%5}"/>
+					<c:set var="lastNum" value="23"/>
 
 					<div>
 
-
-						<span class="btn btn-prev" onclick="alert('이전 페이지가 없습니다.');">이전</span>
+						<c:if test="${startNum-5 >= 1}">
+							<a href="?p=${startNum-5}&t=&q=" class="btn btn-next">다음</a>
+						</c:if>
 
 					</div>
-					<c:set var="page" value="${(param.p == null) ? 1:param.p}"/>
-					<c:set var="startNum" value="${page-(page-1)%5}"/>
+					
+					
 					<ul class="-list- center">
 						<c:forEach var="i" begin="0" end="4" >
 						<li><a class="-text- orange bold" href="?p=${startNum+i}&t=&q=">${startNum+i}</a></li>
@@ -213,9 +220,10 @@
 					</ul>
 					<div>
 						
-						<a href="?p=${startNum+5}&t=&q=" class="btn btn-next"">다음</a>
-						<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
-
+						<c:if test="${startNum+5 < lastNum}">
+							<a href="?p=${startNum+5}&t=&q=" class="btn btn-next">다음</a>
+						</c:if>
+						
 					</div>
 
 				</div>
