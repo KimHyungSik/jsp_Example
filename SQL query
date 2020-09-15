@@ -1,2 +1,2 @@
 범위 지정조회
-select li.* from (select @rownum := @rownum + 1 as rownum, n.* from notice n where (@rownum:=0)=0 order by reg_data desc, id desc ) li where rownum between 6 and 10;
+select li.* from (select @rownumT := @rownumT + 1 as rownum, n.* from notice n, (select @rownumT:=0) R order by reg_data desc, id desc ) li where rownum between 6 and 10;
