@@ -1,0 +1,5 @@
+package net.type.web.service.copy;
+
+public class NoticeService {
+
+}

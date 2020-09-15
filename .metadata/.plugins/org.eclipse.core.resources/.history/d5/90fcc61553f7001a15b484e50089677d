@@ -1,0 +1,33 @@
+package net.type.web.service;
+
+import java.util.List;
+
+import net.type.web.entity.Notice;
+
+public class NoticeService {
+	public List<Notice> getNOticeList() {
+
+		return null;
+	}
+
+	public List<Notice> getNOticeList(int page) {
+
+		return null;
+	}
+
+	public List<Notice> getNOticeList(String field, String query, int page) {
+
+		return null;
+	}
+
+	public int getNoticeCount() {
+
+		return 0;
+	}
+
+	public int getNoticeCount(String field, String query, int page) {
+
+		return 0;
+	}
+
+}
